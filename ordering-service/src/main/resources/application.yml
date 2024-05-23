@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: ordering-service
+server:
+  port: 9093
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    tags:
+      application-name: ${spring.application.name}
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+        step: 1m
+  tracing:
+    sampling:
+      probability: 1.0
+logging:
+  pattern:
+    correlation: "[${spring.application.name:},%X{traceId:-},%X{spanId:-}] "
+  include-application-name: false
