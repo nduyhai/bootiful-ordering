@@ -1,5 +1,11 @@
 server:
   port: 9093
+  http2:
+    enabled: true
+grpc:
+  enabled: true
+  port: 6568
+  enableReflection: true
 spring:
   application:
     name: ordering-service
