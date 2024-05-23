@@ -1,10 +1,23 @@
+server:
+  port: 9092
 spring:
   application:
     name: inventory-service
-server:
-  port: 9092
-
-
+  threads:
+    virtual:
+      enabled: true
+  jpa:
+    show-sql: false
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+    database-platform: org.hibernate.dialect.TiDBDialect
+  datasource:
+    url: ${TIDB_JDBC_URL:jdbc:mysql://localhost:4000/db_inventory}
+    username: ${TIDB_USER:user_app}
+    password: ${TIDB_PASSWORD:user_pass}
+    type: com.mysql.cj.jdbc.MysqlConnectionPoolDataSource
 management:
   endpoints:
     web:

@@ -5,7 +5,7 @@ services:
     image: prom/prometheus
     platform: ${PLATFORM:-linux/amd64}
     ports:
-      - "9094:9090"
+      - "9090:9090"
     volumes:
       - ./config/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     command:
