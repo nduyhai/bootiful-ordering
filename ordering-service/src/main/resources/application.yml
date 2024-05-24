@@ -1,0 +1,49 @@
+server:
+  port: 9093
+  http2:
+    enabled: true
+grpc:
+  enabled: true
+  port: 6568
+  enableReflection: true
+spring:
+  application:
+    name: ordering-service
+  threads:
+    virtual:
+      enabled: true
+  jpa:
+    show-sql: false
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+    database-platform: org.hibernate.dialect.TiDBDialect
+  datasource:
+    url: ${TIDB_JDBC_URL:jdbc:mysql://localhost:4000/db_customer}
+    username: ${TIDB_USER:user_app}
+    password: ${TIDB_PASSWORD:user_pass}
+    type: com.mysql.cj.jdbc.MysqlConnectionPoolDataSource
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    tags:
+      application-name: ${spring.application.name}
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+        step: 1m
+  tracing:
+    sampling:
+      probability: 1.0
+logging:
+  pattern:
+    correlation: "[${spring.application.name:},%X{traceId:-},%X{spanId:-}] "
+  include-application-name: false

@@ -1,0 +1,9 @@
+rootProject.name = 'bootiful-ordering'
+
+include 'gateway-service'
+include 'ordering-service'
+include 'inventory-service'
+include 'customer-service'
+include 'auth-service'
+
+

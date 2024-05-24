@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/auth-service/bootiful-ordering.auth-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/auth-service/bootiful-ordering.auth-service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/customer-service/bootiful-ordering.customer-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/customer-service/bootiful-ordering.customer-service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/gateway-service/bootiful-ordering.gateway-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/gateway-service/bootiful-ordering.gateway-service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/inventory-service/bootiful-ordering.inventory-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/inventory-service/bootiful-ordering.inventory-service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ordering-service/bootiful-ordering.ordering-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ordering-service/bootiful-ordering.ordering-service.main.iml" />
+    </modules>
+  </component>
+</project>
