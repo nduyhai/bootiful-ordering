@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   prometheus:
-    image: prom/prometheus
+    image: prom/prometheus:latest
     platform: ${PLATFORM:-linux/amd64}
     ports:
       - "9090:9090"
@@ -30,7 +30,7 @@ services:
       - ./config/grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
       - ./config/grafana/dashboards:/etc/grafana/dashboards
   tempo:
-    image: grafana/tempo
+    image: grafana/tempo:latest
     platform: ${PLATFORM:-linux/amd64}
     container_name: tempo
     ports:
@@ -39,9 +39,17 @@ services:
       - ./config/tempo/tempo-local.yaml:/etc/tempo-local.yaml
     command: [ "-config.file=/etc/tempo-local.yaml" ]
   loki:
-    image: grafana/loki
+    image: grafana/loki:latest
     platform: ${PLATFORM:-linux/amd64}
     container_name: loki
     ports:
       - "3100:3100"
     command: -config.file=/etc/loki/local-config.yaml
+  consul:
+    image: hashicorp/consul:latest
+    platform: ${PLATFORM:-linux/amd64}
+    ports:
+      - "8500:8500"
+      - "8600:8600/tcp"
+      - "8600:8600/udp"
+    restart: on-failure

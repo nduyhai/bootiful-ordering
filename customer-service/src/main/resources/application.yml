@@ -6,6 +6,10 @@ grpc:
   enabled: true
   port: 6565
   enableReflection: true
+  consul:
+    discovery:
+      tags:
+        - grpc
 spring:
   application:
     name: customer-service
@@ -24,6 +28,12 @@ spring:
     username: ${TIDB_USER:user_app}
     password: ${TIDB_PASSWORD:user_pass}
     type: com.mysql.cj.jdbc.MysqlConnectionPoolDataSource
+  cloud:
+    consul:
+      host: ${CONSUL_HOST:localhost}
+      port: ${CONSUL_PORT:8500}
+      discovery:
+        tags: http
 management:
   endpoints:
     web:
