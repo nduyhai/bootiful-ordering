@@ -16,9 +16,16 @@ spring:
           lower-case-service-id: true
       routes:
         - id: customer-service-route
-          uri: lb://customer-service
+          uri: lb://grpc-customer-service
           predicates:
             - Path=/customers/**
+          filters:
+            - name: JsonToGrpc
+              args:
+                protoDescriptor: file:proto/customer.pb
+                protoFile: file:proto/customer.proto
+                service: CustomerService
+                method: Register
 
 management:
   endpoints:
