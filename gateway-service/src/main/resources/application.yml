@@ -22,8 +22,8 @@ spring:
           filters:
             - name: JsonToGrpc
               args:
-                protoDescriptor: file:proto/customer.pb
-                protoFile: file:proto/customer.proto
+                protoDescriptor: classpath:proto/customer.pb
+                protoFile: classpath:proto/customer.proto
                 service: CustomerService
                 method: Register
 
@@ -50,3 +50,6 @@ logging:
   pattern:
     correlation: "[${spring.application.name:},%X{traceId:-},%X{spanId:-}] "
   include-application-name: false
+  level:
+    root: info
+    org.springframework.cloud.gateway: debug
