@@ -1,0 +1,11 @@
+version: 2
+updates:
+  # Maintain dependencies for Gradle dependencies
+  - package-ecosystem: "gradle"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    reviewers:
+      - "nduyhai"
+    assignees:
+      - "nduyhai"
