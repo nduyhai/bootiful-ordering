@@ -26,6 +26,7 @@ repositories {
 dependencyManagement {
     imports {
         mavenBom("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom:2.6.0")
+        mavenBom 'org.springframework.modulith:spring-modulith-bom:1.2.5'
     }
 }
 
@@ -37,12 +38,21 @@ dependencies {
     implementation 'io.micrometer:micrometer-tracing-bridge-otel'
     implementation("io.opentelemetry.instrumentation:opentelemetry-spring-boot-starter")
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0'
+    implementation("org.springframework.modulith:spring-modulith-starter-core")
+    implementation 'org.springframework.modulith:spring-modulith-starter-jpa'
+    implementation 'org.springframework.modulith:spring-modulith-events-kafka'
+    implementation("org.springframework.kafka:spring-kafka")
+    implementation("org.flywaydb:flyway-core")
+    implementation("org.flywaydb:flyway-database-postgresql")
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'org.postgresql:postgresql'
     runtimeOnly 'io.opentelemetry:opentelemetry-exporter-otlp'
+    runtimeOnly 'org.springframework.modulith:spring-modulith-actuator'
+    runtimeOnly 'org.springframework.modulith:spring-modulith-observability'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation("org.springframework.modulith:spring-modulith-starter-test")
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 

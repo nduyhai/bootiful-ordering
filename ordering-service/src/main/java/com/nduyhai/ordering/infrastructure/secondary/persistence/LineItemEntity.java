@@ -1,7 +1,7 @@
-package com.nduyhai.ordering.infrastructure.secondary;
+package com.nduyhai.ordering.infrastructure.secondary.persistence;
 
 import com.nduyhai.ordering.domain.LineItem;
-import com.nduyhai.ordering.domain.Money;
+import com.nduyhai.ordering.shared.money.domain.Money;
 import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;

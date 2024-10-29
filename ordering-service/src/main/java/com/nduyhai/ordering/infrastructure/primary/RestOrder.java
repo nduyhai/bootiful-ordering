@@ -1,6 +1,6 @@
 package com.nduyhai.ordering.infrastructure.primary;
 
-import com.nduyhai.ordering.domain.Money;
+import com.nduyhai.ordering.shared.money.domain.Money;
 import com.nduyhai.ordering.domain.Order;
 import com.nduyhai.ordering.shared.enumeration.domain.OrderStatus;
 import java.time.LocalDateTime;

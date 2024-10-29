@@ -1,7 +1,7 @@
 package com.nduyhai.ordering.infrastructure.primary;
 
 import com.nduyhai.ordering.domain.LineItem;
-import com.nduyhai.ordering.domain.Money;
+import com.nduyhai.ordering.shared.money.domain.Money;
 import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;

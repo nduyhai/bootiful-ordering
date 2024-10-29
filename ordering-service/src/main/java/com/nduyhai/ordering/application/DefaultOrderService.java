@@ -1,7 +1,8 @@
 package com.nduyhai.ordering.application;
 
-import com.nduyhai.ordering.domain.Money;
+import com.nduyhai.ordering.shared.money.domain.Money;
 import com.nduyhai.ordering.domain.Order;
+import com.nduyhai.ordering.domain.OrderEventPublisher;
 import com.nduyhai.ordering.domain.OrderRepository;
 import com.nduyhai.ordering.shared.enumeration.domain.OrderStatus;
 import java.math.BigDecimal;
@@ -18,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class DefaultOrderService implements OrderService {
   private final OrderRepository orderRepository;
+  private final OrderEventPublisher orderEventPublisher;
 
   @Transactional(readOnly = true)
   @Override
@@ -56,6 +58,10 @@ public class DefaultOrderService implements OrderService {
 
     order.setTotalAmount(new Money(amount, order.getItems().getFirst().getPrice().currency()));
 
-    return this.orderRepository.createOrder(order);
+    final Order savedOrder = this.orderRepository.createOrder(order);
+
+    this.orderEventPublisher.publishEvent(savedOrder);
+
+    return savedOrder;
   }
 }

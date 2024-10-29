@@ -1,4 +1,4 @@
-package com.nduyhai.ordering.infrastructure.secondary;
+package com.nduyhai.ordering.infrastructure.secondary.persistence;
 
 import com.nduyhai.ordering.shared.enumeration.domain.CurrencyCode;
 import jakarta.persistence.Embeddable;

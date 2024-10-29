@@ -1,6 +1,7 @@
 package com.nduyhai.ordering.domain;
 
 import com.nduyhai.ordering.shared.enumeration.domain.OrderStatus;
+import com.nduyhai.ordering.shared.money.domain.Money;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;

@@ -12,12 +12,16 @@ spring:
     show-sql: false
     open-in-view: false
     hibernate:
-      ddl-auto: update
-    generate-ddl: true
+      ddl-auto: none
+    generate-ddl: false
   datasource:
     url: jdbc:postgresql://localhost:5432/order
     username: myuser
     password: secret
+  flyway:
+    enabled: true
+  modulith:
+    republish-outstanding-events-on-restart: true
 management:
   endpoints:
     web:
@@ -43,4 +47,3 @@ logging:
     correlation: "[${spring.application.name:},%X{traceId:-},%X{spanId:-}] "
   include-application-name: false
 
-      

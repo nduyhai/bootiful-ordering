@@ -1,4 +1,4 @@
-package com.nduyhai.ordering.infrastructure.secondary;
+package com.nduyhai.ordering.infrastructure.secondary.persistence;
 
 import com.nduyhai.ordering.domain.Order;
 import com.nduyhai.ordering.domain.OrderRepository;
