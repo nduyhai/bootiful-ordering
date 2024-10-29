@@ -39,10 +39,18 @@ public class DefaultOrderService implements OrderService {
     order.setStatus(OrderStatus.PENDING);
     order.setCreatedAt(LocalDateTime.now());
     order.setUpdatedAt(order.getCreatedAt());
+    order
+        .getItems()
+        .forEach(
+            e ->
+                e.setSubTotal(
+                    new Money(
+                        e.getPrice().amount().multiply(new BigDecimal(e.getQuantity())),
+                        e.getPrice().currency())));
 
     final BigDecimal amount =
         order.getItems().stream()
-            .map(e -> e.getPrice().amount().multiply(new BigDecimal(e.getQuantity())))
+            .map(e -> e.getSubTotal().amount())
             .reduce(BigDecimal::add)
             .orElse(new BigDecimal(0));
 

@@ -12,7 +12,7 @@ spring:
     show-sql: false
     open-in-view: false
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     generate-ddl: true
   datasource:
     url: jdbc:postgresql://localhost:5432/order
