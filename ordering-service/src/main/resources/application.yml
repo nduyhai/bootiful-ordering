@@ -29,11 +29,12 @@ management:
   metrics:
     tags:
       application-name: ${spring.application.name}
-  prometheus:
+  otlp:
     metrics:
       export:
         enabled: true
         step: 1m
+        url: ${OTLP_BASE_URL:http://localhost:4318/v1/metrics}
   tracing:
     sampling:
       probability: 1.0
@@ -41,3 +42,5 @@ logging:
   pattern:
     correlation: "[${spring.application.name:},%X{traceId:-},%X{spanId:-}] "
   include-application-name: false
+
+      

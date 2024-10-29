@@ -3,7 +3,7 @@ version: "3.7"
 services:
   prometheus:
     image: prom/prometheus
-    platform: ${PLATFORM:-linux/amd64}
+    platform: ${PLATFORM:-linux/arm64}
     ports:
       - "9090:9090"
     volumes:
@@ -14,7 +14,7 @@ services:
       - "host.docker.internal:host-gateway" #for linux
   grafana:
     image: grafana/grafana
-    platform: ${PLATFORM:-linux/amd64}
+    platform: ${PLATFORM:-linux/arm64}
     depends_on:
       - prometheus
       - tempo
@@ -31,20 +31,14 @@ services:
       - ./config/grafana/dashboards:/etc/grafana/dashboards
   tempo:
     image: grafana/tempo
-    platform: ${PLATFORM:-linux/amd64}
+    platform: ${PLATFORM:-linux/arm64}
     container_name: tempo
     ports:
-      - "9411:9411"   # jaeger http
+      - "3200:3200"   # tempo
+      - "4318:4318"  # otlp http
     volumes:
       - ./config/tempo/tempo-local.yaml:/etc/tempo-local.yaml
     command: [ "-config.file=/etc/tempo-local.yaml" ]
-  loki:
-    image: grafana/loki
-    platform: ${PLATFORM:-linux/amd64}
-    container_name: loki
-    ports:
-      - "3100:3100"
-    command: -config.file=/etc/loki/local-config.yaml
   postgres:
     image: 'postgres:latest'
     environment:
