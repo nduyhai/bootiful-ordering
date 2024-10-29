@@ -21,13 +21,13 @@ public class DefaultOrderRepository implements OrderRepository {
   }
 
   @Override
-  public void cancelOder(UUID orderId) {
+  public Order cancelOder(UUID orderId) {
     OrderEntity orderEntity = this.jpaOrderRepository.getReferenceById(orderId);
 
     orderEntity.setStatus(OrderStatus.CANCELED);
     orderEntity.setUpdatedAt(LocalDateTime.now());
 
-    this.jpaOrderRepository.save(orderEntity);
+    return this.jpaOrderRepository.save(orderEntity).toDomain();
   }
 
   @Override

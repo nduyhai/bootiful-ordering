@@ -1,10 +1,10 @@
 package com.nduyhai.ordering.application;
 
-import com.nduyhai.ordering.shared.money.domain.Money;
 import com.nduyhai.ordering.domain.Order;
 import com.nduyhai.ordering.domain.OrderEventPublisher;
 import com.nduyhai.ordering.domain.OrderRepository;
 import com.nduyhai.ordering.shared.enumeration.domain.OrderStatus;
+import com.nduyhai.ordering.shared.money.domain.Money;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -30,7 +30,9 @@ public class DefaultOrderService implements OrderService {
   @Transactional
   @Override
   public void cancel(UUID orderId) {
-    this.orderRepository.cancelOder(orderId);
+    Order savedOrder = this.orderRepository.cancelOder(orderId);
+
+    this.orderEventPublisher.publishEvent(savedOrder);
   }
 
   @Transactional
