@@ -39,9 +39,9 @@ Access http://localhost:3000/d/bootiful_ordering/bootiful-ordering-system?orgId=
 
 * Order Service: Handles order creation, management, and status updates. It processes incoming orders and orchestrates actions like order validation and status tracking.
 * Customer Service: Manages customer information, including registration, authentication, and preferences. This service authenticates users and verifies that they have the necessary permissions to place orders.
-  ( Restaurant Service: Maintains restaurant details, menus, and availability. This service allows the system to retrieve restaurant data and updates menu information for orders.
+* Restaurant Service: Maintains restaurant details, menus, and availability. This service allows the system to retrieve restaurant data and updates menu information for orders.
 * Inventory Service: Manages inventory details to track available items for orders. The service ensures that only available items are shown, and deducts inventory on order placement.
 * Payment Service: Processes payments and handles refunds if necessary. This service integrates with third-party payment processors and manages payment validation.
 * Delivery Service: Manages delivery details and driver assignment. The service coordinates with external or internal delivery partners to schedule and track deliveries.
 * Notification Service: Handles notifications to customers and restaurants (e.g., order confirmation, delivery updates). Notifications can be sent via SMS, email, or in-app messaging.
-Reporting and Analytics Service: Collects data on orders, customer preferences, and delivery times for business insights and performance analytics.
+* Reporting and Analytics Service: Collects data on orders, customer preferences, and delivery times for business insights and performance analytics.
