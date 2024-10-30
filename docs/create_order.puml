@@ -3,9 +3,31 @@
 
 autonumber
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+actor Bob
+participant Product
+participant Order
+queue OrderChangedEvent
+participant Inventory
+queue InventoryChangedEvent
+participant Payment
+participant Shipping
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+
+
+Bob -> Order
+activate Order
+Order --> OrderChangedEvent
+Order --> Bob
+deactivate Order
+
+
+OrderChangedEvent  --> Inventory
+activate Inventory
+alt resevered
+Inventory --> InventoryChangedEvent
+else
+Inventory --> InventoryChangedEvent
+end
+deactivate Inventory
+
 @enduml
