@@ -22,6 +22,10 @@ spring:
     enabled: true
   modulith:
     republish-outstanding-events-on-restart: false
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: inventory-service
 management:
   endpoints:
     web:
