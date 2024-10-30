@@ -1,6 +1,6 @@
 package com.nduyhai.inventory.infrastructure.secondary.persistence.entity;
 
-import com.nduyhai.inventory.shared.enumeration.domain.TransactionType;
+import com.github.nduyhai.common.enumeration.TransactionType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;

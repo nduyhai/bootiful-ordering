@@ -1,7 +1,7 @@
 package com.nduyhai.ordering.infrastructure.secondary.kafka;
 
+import com.github.nduyhai.common.money.Money;
 import com.nduyhai.ordering.domain.LineItem;
-import com.nduyhai.ordering.shared.money.domain.Money;
 import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;

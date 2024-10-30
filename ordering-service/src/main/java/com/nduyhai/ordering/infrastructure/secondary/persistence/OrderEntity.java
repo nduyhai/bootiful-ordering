@@ -1,8 +1,8 @@
 package com.nduyhai.ordering.infrastructure.secondary.persistence;
 
-import com.nduyhai.ordering.shared.money.domain.Money;
+import com.github.nduyhai.common.enumeration.OrderStatus;
+import com.github.nduyhai.common.money.Money;
 import com.nduyhai.ordering.domain.Order;
-import com.nduyhai.ordering.shared.enumeration.domain.OrderStatus;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;

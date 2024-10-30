@@ -1,8 +1,8 @@
 package com.nduyhai.ordering.infrastructure.secondary.kafka;
 
+import com.github.nduyhai.common.enumeration.OrderStatus;
+import com.github.nduyhai.common.money.Money;
 import com.nduyhai.ordering.domain.Order;
-import com.nduyhai.ordering.shared.enumeration.domain.OrderStatus;
-import com.nduyhai.ordering.shared.money.domain.Money;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;

@@ -1,8 +1,5 @@
-package com.nduyhai.ordering.shared.enumeration.domain;
+package com.github.nduyhai.common.enumeration;
 
-import lombok.Getter;
-
-@Getter
 public enum CurrencyCode {
   VND("Vietnamese đồng"),
   USD("United States Dollars");
@@ -11,5 +8,9 @@ public enum CurrencyCode {
 
   CurrencyCode(String displayName) {
     this.displayName = displayName;
+  }
+
+  public String getDisplayName() {
+    return displayName;
   }
 }

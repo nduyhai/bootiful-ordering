@@ -1,8 +1,8 @@
 package com.nduyhai.ordering.infrastructure.secondary.persistence;
 
+import com.github.nduyhai.common.enumeration.OrderStatus;
 import com.nduyhai.ordering.domain.Order;
 import com.nduyhai.ordering.domain.OrderRepository;
-import com.nduyhai.ordering.shared.enumeration.domain.OrderStatus;
 import jakarta.persistence.EntityNotFoundException;
 import java.time.LocalDateTime;
 import java.util.Optional;

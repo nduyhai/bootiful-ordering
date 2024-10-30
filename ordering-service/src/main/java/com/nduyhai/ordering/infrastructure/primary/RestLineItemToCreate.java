@@ -1,7 +1,7 @@
 package com.nduyhai.ordering.infrastructure.primary;
 
+import com.github.nduyhai.common.money.Money;
 import com.nduyhai.ordering.domain.LineItem;
-import com.nduyhai.ordering.shared.money.domain.Money;
 import jakarta.validation.constraints.NotNull;
 import java.util.UUID;
 import lombok.Getter;

@@ -1,6 +1,6 @@
 package com.nduyhai.inventory.infrastructure.primary.kafka;
 
-import com.nduyhai.inventory.shared.money.domain.Money;
+import com.github.nduyhai.common.money.Money;
 import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;

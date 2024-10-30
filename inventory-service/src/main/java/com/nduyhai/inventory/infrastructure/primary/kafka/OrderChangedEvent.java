@@ -1,7 +1,7 @@
 package com.nduyhai.inventory.infrastructure.primary.kafka;
 
-import com.nduyhai.inventory.shared.enumeration.domain.OrderStatus;
-import com.nduyhai.inventory.shared.money.domain.Money;
+import com.github.nduyhai.common.enumeration.OrderStatus;
+import com.github.nduyhai.common.money.Money;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;

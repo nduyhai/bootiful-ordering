@@ -1,4 +1,4 @@
-package com.nduyhai.ordering.shared.enumeration.domain;
+package com.github.nduyhai.common.enumeration;
 
 public enum OrderStatus {
   PENDING,

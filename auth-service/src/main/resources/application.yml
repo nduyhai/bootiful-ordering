@@ -2,10 +2,6 @@ server:
   port: 8089
   http2:
     enabled: true
-grpc:
-  enabled: true
-  port: 6566
-  enableReflection: true
 spring:
   application:
     name: auth-service
@@ -16,14 +12,13 @@ spring:
     show-sql: false
     open-in-view: false
     hibernate:
-      ddl-auto: update
-    generate-ddl: true
+      ddl-auto: none
+    generate-ddl: false
     database-platform: org.hibernate.dialect.TiDBDialect
   datasource:
-    url: ${TIDB_JDBC_URL:jdbc:mysql://localhost:4000/db_auth}
-    username: ${TIDB_USER:user_app}
-    password: ${TIDB_PASSWORD:user_pass}
-    type: com.mysql.cj.jdbc.MysqlConnectionPoolDataSource
+    url: jdbc:postgresql://localhost:5432/auth
+    username: myuser
+    password: secret
 management:
   endpoints:
     web:
@@ -35,11 +30,12 @@ management:
   metrics:
     tags:
       application-name: ${spring.application.name}
-  prometheus:
+  otlp:
     metrics:
       export:
         enabled: true
         step: 1m
+        url: ${OTLP_BASE_URL:http://localhost:4318/v1/metrics}
   tracing:
     sampling:
       probability: 1.0
