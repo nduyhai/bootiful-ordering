@@ -40,7 +40,7 @@ public class DefaultOrderService implements OrderService {
   public Order createOrder(Order order) {
 
     order.setOrderId(UUID.randomUUID());
-    order.setStatus(OrderStatus.PENDING);
+    order.setStatus(OrderStatus.CREATED);
     order.setCreatedAt(LocalDateTime.now());
     order.setUpdatedAt(order.getCreatedAt());
     order

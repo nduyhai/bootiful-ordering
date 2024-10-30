@@ -1,7 +1,10 @@
 package com.github.nduyhai.common.enumeration;
 
 public enum OrderStatus {
-  PENDING,
+  CREATED,
+  CONFIRMED,
+  PAID,
+  SHIPPED,
   COMPLETED,
   CANCELED
 }
