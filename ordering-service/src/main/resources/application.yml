@@ -22,6 +22,9 @@ spring:
     enabled: true
   modulith:
     republish-outstanding-events-on-restart: false
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
 management:
   endpoints:
     web:
@@ -46,4 +49,3 @@ logging:
   pattern:
     correlation: "[${spring.application.name:},%X{traceId:-},%X{spanId:-}] "
   include-application-name: false
-
