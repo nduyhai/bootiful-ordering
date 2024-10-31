@@ -1,7 +1,6 @@
 package com.nduyhai.ordering.infrastructure.primary;
 
 import com.github.nduyhai.common.money.Money;
-import com.nduyhai.ordering.domain.LineItem;
 import jakarta.validation.constraints.NotNull;
 import java.util.UUID;
 import lombok.Getter;
@@ -14,12 +13,4 @@ public class RestLineItemToCreate {
   @NotNull private UUID productId;
   private int quantity;
   @NotNull private Money price;
-
-  public LineItem toDomain() {
-    LineItem item = new LineItem();
-    item.setProductId(productId);
-    item.setQuantity(quantity);
-    item.setPrice(price);
-    return item;
-  }
 }

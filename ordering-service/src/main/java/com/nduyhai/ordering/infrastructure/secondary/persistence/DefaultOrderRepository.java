@@ -14,10 +14,15 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class DefaultOrderRepository implements OrderRepository {
   private final JpaOrderRepository jpaOrderRepository;
+  private final PersistenceMapper persistenceMapper;
 
   @Override
   public Order createOrder(Order order) {
-    return this.jpaOrderRepository.save(OrderEntity.fromDomain(order)).toDomain();
+    OrderEntity orderEntity = this.persistenceMapper.fromDomain(order);
+
+    orderEntity.getItems().forEach(line -> line.setOrderEntity(orderEntity));
+
+    return this.persistenceMapper.toDomain(jpaOrderRepository.save(orderEntity));
   }
 
   @Override
@@ -27,13 +32,14 @@ public class DefaultOrderRepository implements OrderRepository {
     orderEntity.setStatus(OrderStatus.CANCELED);
     orderEntity.setUpdatedAt(LocalDateTime.now());
 
-    return this.jpaOrderRepository.save(orderEntity).toDomain();
+    return this.persistenceMapper.toDomain(this.jpaOrderRepository.save(orderEntity));
   }
 
   @Override
   public Optional<Order> getById(UUID id) {
     try {
-      return Optional.of(this.jpaOrderRepository.getReferenceById(id).toDomain());
+      return Optional.of(
+          this.persistenceMapper.toDomain(this.jpaOrderRepository.getReferenceById(id)));
     } catch (EntityNotFoundException e) {
       return Optional.empty();
     }

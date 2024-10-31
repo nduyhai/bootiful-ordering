@@ -19,18 +19,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class OrderController {
   private final OrderService orderService;
+  private final RestMapper restMapper;
 
   @PostMapping
   public ResponseEntity<RestOrder> createOrder(@RequestBody RestOrderToCreate req) {
-    Order order = this.orderService.createOrder(req.toDomain());
-    return ResponseEntity.ok(RestOrder.fromDomain(order));
+
+    Order order = this.orderService.createOrder(this.restMapper.toDomain(req));
+
+    return ResponseEntity.ok(this.restMapper.fromDomain(order));
   }
 
   @GetMapping("/{orderId}")
   public ResponseEntity<RestOrder> getOrder(@PathVariable UUID orderId) {
     Optional<Order> order = this.orderService.getOrder(orderId);
     return order
-        .map(value -> ResponseEntity.ok(RestOrder.fromDomain(value)))
+        .map(value -> ResponseEntity.ok(this.restMapper.fromDomain(value)))
         .orElseGet(() -> ResponseEntity.badRequest().build());
   }
 

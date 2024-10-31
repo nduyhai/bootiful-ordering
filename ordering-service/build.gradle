@@ -44,6 +44,7 @@ dependencies {
     implementation("org.springframework.kafka:spring-kafka")
     implementation("org.flywaydb:flyway-core")
     implementation("org.flywaydb:flyway-database-postgresql")
+    implementation 'org.mapstruct:mapstruct:1.6.2'
     implementation 'com.github.nduyhai:bootiful-common:0.0.1'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
@@ -54,6 +55,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation("org.springframework.modulith:spring-modulith-starter-test")
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.6.2'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
