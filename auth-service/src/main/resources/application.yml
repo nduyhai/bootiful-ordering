@@ -14,7 +14,6 @@ spring:
     hibernate:
       ddl-auto: none
     generate-ddl: false
-    database-platform: org.hibernate.dialect.TiDBDialect
   datasource:
     url: jdbc:postgresql://localhost:5432/auth
     username: myuser
