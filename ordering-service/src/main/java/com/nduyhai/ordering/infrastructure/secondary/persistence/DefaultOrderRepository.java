@@ -26,10 +26,10 @@ public class DefaultOrderRepository implements OrderRepository {
   }
 
   @Override
-  public Order cancelOder(UUID orderId) {
+  public Order updateStatus(UUID orderId, OrderStatus status) {
     OrderEntity orderEntity = this.jpaOrderRepository.getReferenceById(orderId);
 
-    orderEntity.setStatus(OrderStatus.CANCELED);
+    orderEntity.setStatus(status);
     orderEntity.setUpdatedAt(LocalDateTime.now());
 
     return this.persistenceMapper.toDomain(this.jpaOrderRepository.save(orderEntity));

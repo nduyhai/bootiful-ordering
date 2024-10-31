@@ -1,4 +1,4 @@
-package com.nduyhai.ordering.infrastructure.secondary.kafka;
+package com.nduyhai.ordering.infrastructure.secondary.messaging;
 
 import com.nduyhai.ordering.domain.Order;
 import com.nduyhai.ordering.domain.OrderEventPublisher;
@@ -10,10 +10,11 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class DefaultOrderEventPublisher implements OrderEventPublisher {
   private final ApplicationEventPublisher applicationEventPublisher;
+  private final OrderMessagingMapper orderMessagingMapper;
 
   @Override
-  public void publishEvent(Order order) {
-    OrderChangedEvent event = OrderChangedEvent.fromDomain(order);
+  public void onConfirmed(Order order) {
+    OrderConfirmedEvent event = this.orderMessagingMapper.fromDomain(order);
 
     this.applicationEventPublisher.publishEvent(event);
   }

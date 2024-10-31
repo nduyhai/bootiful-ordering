@@ -1,4 +1,4 @@
-package com.nduyhai.inventory.infrastructure.primary.kafka;
+package com.nduyhai.ordering.infrastructure.secondary.messaging;
 
 import com.github.nduyhai.common.enumeration.OrderStatus;
 import com.github.nduyhai.common.money.Money;
@@ -7,12 +7,13 @@ import java.util.List;
 import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
+import org.jmolecules.event.types.DomainEvent;
+import org.springframework.modulith.events.Externalized;
 
+@Externalized(value = "OrderConfirmedEvent")
 @Getter
 @Setter
-@ToString
-public class OrderChangedEvent {
+public class OrderConfirmedEvent implements DomainEvent {
   private UUID orderId;
   private UUID customerId;
   private List<LineItemEvent> items;

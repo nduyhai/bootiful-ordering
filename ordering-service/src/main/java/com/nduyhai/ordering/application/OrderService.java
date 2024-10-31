@@ -7,7 +7,9 @@ import java.util.UUID;
 public interface OrderService {
   Optional<Order> getOrder(UUID orderId);
 
+  Order createOrder(Order order);
+
   void cancel(UUID orderId);
 
-  Order createOrder(Order order);
+  void confirmed(UUID orderId);
 }

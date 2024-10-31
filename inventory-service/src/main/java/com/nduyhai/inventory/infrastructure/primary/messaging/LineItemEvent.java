@@ -1,4 +1,4 @@
-package com.nduyhai.inventory.infrastructure.primary.kafka;
+package com.nduyhai.inventory.infrastructure.primary.messaging;
 
 import com.github.nduyhai.common.money.Money;
 import java.util.UUID;

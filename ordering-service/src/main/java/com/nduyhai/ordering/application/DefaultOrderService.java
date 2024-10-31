@@ -29,14 +29,6 @@ public class DefaultOrderService implements OrderService {
 
   @Transactional
   @Override
-  public void cancel(UUID orderId) {
-    Order savedOrder = this.orderRepository.cancelOder(orderId);
-
-    this.orderEventPublisher.publishEvent(savedOrder);
-  }
-
-  @Transactional
-  @Override
   public Order createOrder(Order order) {
 
     order.setOrderId(UUID.randomUUID());
@@ -60,10 +52,20 @@ public class DefaultOrderService implements OrderService {
 
     order.setTotalAmount(new Money(amount, order.getItems().getFirst().getPrice().currency()));
 
-    final Order savedOrder = this.orderRepository.createOrder(order);
+    return this.orderRepository.createOrder(order);
+  }
 
-    this.orderEventPublisher.publishEvent(savedOrder);
+  @Transactional
+  @Override
+  public void cancel(UUID orderId) {
+    this.orderRepository.updateStatus(orderId, OrderStatus.CANCELED);
+  }
 
-    return savedOrder;
+  @Transactional
+  @Override
+  public void confirmed(UUID orderId) {
+    Order savedOrder = this.orderRepository.updateStatus(orderId, OrderStatus.CONFIRMED);
+
+    this.orderEventPublisher.onConfirmed(savedOrder);
   }
 }

@@ -1,4 +1,4 @@
-package com.nduyhai.ordering.infrastructure.secondary.kafka;
+package com.nduyhai.ordering.infrastructure.secondary.messaging;
 
 import com.github.nduyhai.common.money.Money;
 import com.nduyhai.ordering.domain.LineItem;

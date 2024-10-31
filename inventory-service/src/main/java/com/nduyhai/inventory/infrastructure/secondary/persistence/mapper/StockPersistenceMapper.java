@@ -9,7 +9,7 @@ import com.nduyhai.inventory.infrastructure.secondary.persistence.entity.Transac
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
-public interface PersistenceMapper {
+public interface StockPersistenceMapper {
   Reservation toDomain(ReservationEntity reservationEntity);
 
   ReservationEntity fromDomain(Reservation reservation);
