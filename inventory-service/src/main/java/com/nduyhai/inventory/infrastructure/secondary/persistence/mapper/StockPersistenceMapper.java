@@ -7,6 +7,7 @@ import com.nduyhai.inventory.infrastructure.secondary.persistence.entity.Reserva
 import com.nduyhai.inventory.infrastructure.secondary.persistence.entity.StockLevelEntity;
 import com.nduyhai.inventory.infrastructure.secondary.persistence.entity.TransactionEntity;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface StockPersistenceMapper {
@@ -14,6 +15,10 @@ public interface StockPersistenceMapper {
 
   ReservationEntity fromDomain(Reservation reservation);
 
+  @Mapping(
+      target = "remainingQuantity",
+      expression =
+          "java(stockLevelEntity.getTotalQuantity() - stockLevelEntity.getReservedQuantity())")
   StockLevel toDomain(StockLevelEntity stockLevelEntity);
 
   StockLevelEntity fromDomain(StockLevel stockLevel);

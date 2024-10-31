@@ -4,7 +4,8 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface StockLevelRepository {
-  Optional<StockLevel> findByProductIdAndLocationId(UUID productId, UUID locationId);
 
-  StockLevels findByProductId(UUID productId);
+  Optional<StockLevel> findByProductId(UUID productId);
+
+  StockLevel save(StockLevel stockLevel);
 }

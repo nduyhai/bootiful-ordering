@@ -16,7 +16,6 @@ import lombok.Setter;
 public class StockLevelEntity implements Serializable {
   @Id private UUID stockId;
   private UUID productId;
-  private UUID locationId;
   private long totalQuantity;
   private long reservedQuantity;
   private LocalDateTime createdAt;

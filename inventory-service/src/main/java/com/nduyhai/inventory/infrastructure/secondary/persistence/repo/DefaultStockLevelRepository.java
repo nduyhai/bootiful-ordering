@@ -2,7 +2,7 @@ package com.nduyhai.inventory.infrastructure.secondary.persistence.repo;
 
 import com.nduyhai.inventory.domain.StockLevel;
 import com.nduyhai.inventory.domain.StockLevelRepository;
-import com.nduyhai.inventory.domain.StockLevels;
+import com.nduyhai.inventory.infrastructure.secondary.persistence.entity.StockLevelEntity;
 import com.nduyhai.inventory.infrastructure.secondary.persistence.mapper.StockPersistenceMapper;
 import java.util.Optional;
 import java.util.UUID;
@@ -16,17 +16,17 @@ public class DefaultStockLevelRepository implements StockLevelRepository {
   private final StockPersistenceMapper stockPersistenceMapper;
 
   @Override
-  public Optional<StockLevel> findByProductIdAndLocationId(UUID productId, UUID locationId) {
+  public Optional<StockLevel> findByProductId(UUID productId) {
     return this.jpaStockLevelRepository
-        .findByProductIdAndLocationId(productId, locationId)
+        .findByProductId(productId)
         .map(this.stockPersistenceMapper::toDomain);
   }
 
   @Override
-  public StockLevels findByProductId(UUID productId) {
-    return new StockLevels(
-        this.jpaStockLevelRepository.findByProductId(productId).stream()
-            .map(this.stockPersistenceMapper::toDomain)
-            .toList());
+  public StockLevel save(StockLevel stockLevel) {
+    StockLevelEntity saved =
+        this.jpaStockLevelRepository.save(this.stockPersistenceMapper.fromDomain(stockLevel));
+
+    return this.stockPersistenceMapper.toDomain(saved);
   }
 }

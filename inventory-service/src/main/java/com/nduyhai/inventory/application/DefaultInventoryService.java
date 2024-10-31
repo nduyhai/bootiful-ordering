@@ -1,18 +1,13 @@
 package com.nduyhai.inventory.application;
 
 import com.nduyhai.common.enumeration.ReservationStatus;
-import com.nduyhai.inventory.domain.Reservation;
+import com.nduyhai.inventory.domain.ReservationCreator;
 import com.nduyhai.inventory.domain.ReservationEventPublisher;
-import com.nduyhai.inventory.domain.ReservationRepository;
 import com.nduyhai.inventory.domain.ReservationToCreate;
-import com.nduyhai.inventory.domain.ReservedStock;
-import com.nduyhai.inventory.domain.ReservedStocks;
+import com.nduyhai.inventory.domain.StockChecker;
 import com.nduyhai.inventory.domain.StockLevel;
-import com.nduyhai.inventory.domain.StockLevelRepository;
-import com.nduyhai.inventory.domain.StockLevels;
-import java.time.LocalDateTime;
-import java.util.Collection;
-import java.util.List;
+import com.nduyhai.inventory.domain.StockSelector;
+import com.nduyhai.inventory.domain.StockUpdater;
 import java.util.Optional;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
@@ -22,50 +17,32 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
 public class DefaultInventoryService implements InventoryService {
-  private final StockLevelRepository stockLevelRepository;
-  private final ReservationRepository reservationRepository;
+  private final StockSelector stockSelector;
+  private final StockChecker stockChecker;
+  private final StockUpdater stockUpdater;
+  private final ReservationCreator reservationCreator;
   private final ReservationEventPublisher reservationEventPublisher;
 
   @Transactional(readOnly = true)
   @Override
-  public StockLevels getByProductId(UUID productId) {
-    return this.stockLevelRepository.findByProductId(productId);
-  }
-
-  @Transactional(readOnly = true)
-  @Override
-  public Optional<StockLevel> getByProductLocation(UUID productId, UUID locationId) {
-    return this.stockLevelRepository.findByProductIdAndLocationId(productId, locationId);
+  public Optional<StockLevel> getByProductId(UUID productId) {
+    return this.stockSelector.getByProductId(productId);
   }
 
   @Transactional
   @Override
   public void reserveStock(ReservationToCreate req) {
-    final LocalDateTime currentTime = LocalDateTime.now();
+    boolean valid = this.stockChecker.validateReservation(req);
+    if (valid) {
 
-    ReservedStocks items = req.items();
-    Collection<ReservedStock> stocks = items.getItems();
-    final List<Reservation> reservations =
-        stocks.stream()
-            .map(
-                reservedStock -> {
-                  Reservation reservation = new Reservation();
+      this.stockUpdater.reserve(req);
 
-                  reservation.setReservationId(UUID.randomUUID());
-                  reservation.setProductId(reservedStock.productId());
-                  reservation.setOrderId(req.orderId());
-                  reservation.setQuantity(reservedStock.quantity());
-                  reservation.setStatus(ReservationStatus.PENDING);
-                  reservation.setCreatedAt(currentTime);
-                  reservation.setUpdatedAt(currentTime);
-                  reservation.setExpiredAt(currentTime);
+      this.reservationCreator.create(req);
 
-                  return reservation;
-                })
-            .toList();
+      this.reservationEventPublisher.publishEvent(req, ReservationStatus.FAILED);
 
-    final List<Reservation> savedReservations = this.reservationRepository.saveAll(reservations);
-
-    this.reservationEventPublisher.onReserved(savedReservations);
+    } else {
+      this.reservationEventPublisher.publishEvent(req, ReservationStatus.PENDING);
+    }
   }
 }

@@ -20,17 +20,8 @@ public class InventoryController {
   private final RestMapper restMapper;
 
   @GetMapping("/{productId}")
-  public ResponseEntity<RestInventories> getInventories(@PathVariable UUID productId) {
-    return ResponseEntity.ok(
-        this.restMapper.fromDomain(this.inventoryService.getByProductId(productId)));
-  }
-
-  @GetMapping("/{productId}/{locationId}")
-  public ResponseEntity<RestInventory> getInventory(
-      @PathVariable UUID productId, @PathVariable UUID locationId) {
-    Optional<StockLevel> stockLevel =
-        this.inventoryService.getByProductLocation(productId, locationId);
-
+  public ResponseEntity<RestInventory> getInventories(@PathVariable UUID productId) {
+    Optional<StockLevel> stockLevel = this.inventoryService.getByProductId(productId);
     return stockLevel
         .map(value -> ResponseEntity.ok(this.restMapper.fromDomain(value)))
         .orElseGet(() -> ResponseEntity.badRequest().build());

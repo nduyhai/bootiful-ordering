@@ -21,20 +21,17 @@ create table stock_levels
     reserved_quantity bigint not null,
     total_quantity    bigint not null,
     updated_at        timestamp(6),
-    location_id       uuid,
     product_id        uuid,
     stock_id          uuid   not null primary key
 );
 
 CREATE INDEX IF NOT EXISTS stock_levels_by_product_id_idx on stock_levels (product_id);
-CREATE INDEX IF NOT EXISTS stock_levels_by_location_id_idx on stock_levels (location_id);
 
 create table transactions
 (
     balance_after  bigint not null,
     created_at     timestamp(6),
     quantity       bigint not null,
-    location_id    uuid,
     order_id       uuid,
     product_id     uuid,
     transaction_id uuid   not null

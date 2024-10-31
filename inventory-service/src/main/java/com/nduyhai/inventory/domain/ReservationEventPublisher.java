@@ -1,7 +1,8 @@
 package com.nduyhai.inventory.domain;
 
-import java.util.List;
+import com.nduyhai.common.enumeration.ReservationStatus;
 
 public interface ReservationEventPublisher {
-  void onReserved(List<Reservation> reservations);
+
+  void publishEvent(ReservationToCreate req, ReservationStatus status);
 }

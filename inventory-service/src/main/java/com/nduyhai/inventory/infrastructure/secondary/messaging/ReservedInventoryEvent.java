@@ -1,6 +1,6 @@
 package com.nduyhai.inventory.infrastructure.secondary.messaging;
 
-import java.util.List;
+import com.nduyhai.common.enumeration.ReservationStatus;
 import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,5 +14,5 @@ import org.springframework.modulith.events.Externalized;
 @ToString
 public class ReservedInventoryEvent implements DomainEvent {
   private UUID orderId;
-  private List<UUID> reservedIds;
+  private ReservationStatus status;
 }

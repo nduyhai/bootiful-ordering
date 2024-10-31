@@ -10,9 +10,9 @@ import lombok.Setter;
 public class StockLevel {
   private UUID stockId;
   private UUID productId;
-  private UUID locationId;
   private long totalQuantity;
   private long reservedQuantity;
   private long remainingQuantity;
+  private LocalDateTime createdAt;
   private LocalDateTime updatedAt;
 }

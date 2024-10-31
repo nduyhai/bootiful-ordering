@@ -19,7 +19,6 @@ import lombok.Setter;
 public class TransactionEntity implements Serializable {
   @Id private UUID transactionId;
   private UUID productId;
-  private UUID locationId;
   private UUID orderId;
 
   @Enumerated(value = EnumType.STRING)

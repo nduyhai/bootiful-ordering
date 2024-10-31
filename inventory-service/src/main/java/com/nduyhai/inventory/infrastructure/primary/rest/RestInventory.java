@@ -9,7 +9,6 @@ import lombok.Setter;
 @Setter
 public class RestInventory {
   private UUID stockId;
-  private UUID locationId;
   private UUID productId;
   private long totalQuantity;
   private long reservedQuantity;
