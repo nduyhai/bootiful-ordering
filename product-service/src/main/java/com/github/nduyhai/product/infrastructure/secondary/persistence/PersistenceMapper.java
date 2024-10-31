@@ -1,6 +1,6 @@
-package com.github.nduyhai.product.infrastructure.secondary.persistence;
+package com.nduyhai.product.infrastructure.secondary.persistence;
 
-import com.github.nduyhai.product.domain.Product;
+import com.nduyhai.product.domain.Product;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

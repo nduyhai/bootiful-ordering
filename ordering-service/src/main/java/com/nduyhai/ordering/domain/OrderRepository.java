@@ -1,6 +1,6 @@
 package com.nduyhai.ordering.domain;
 
-import com.github.nduyhai.common.enumeration.OrderStatus;
+import com.nduyhai.common.enumeration.OrderStatus;
 import java.util.Optional;
 import java.util.UUID;
 

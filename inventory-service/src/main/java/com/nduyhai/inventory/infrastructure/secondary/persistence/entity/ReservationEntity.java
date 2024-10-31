@@ -1,6 +1,6 @@
 package com.nduyhai.inventory.infrastructure.secondary.persistence.entity;
 
-import com.github.nduyhai.common.enumeration.ReservationStatus;
+import com.nduyhai.common.enumeration.ReservationStatus;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;

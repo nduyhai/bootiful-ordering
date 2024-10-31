@@ -1,6 +1,6 @@
 package com.nduyhai.inventory.domain;
 
-import com.github.nduyhai.common.enumeration.ReservationStatus;
+import com.nduyhai.common.enumeration.ReservationStatus;
 import java.time.LocalDateTime;
 import java.util.UUID;
 import lombok.Getter;

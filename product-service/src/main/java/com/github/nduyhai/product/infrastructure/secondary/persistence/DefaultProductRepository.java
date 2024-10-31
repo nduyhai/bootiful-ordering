@@ -1,7 +1,7 @@
-package com.github.nduyhai.product.infrastructure.secondary.persistence;
+package com.nduyhai.product.infrastructure.secondary.persistence;
 
-import com.github.nduyhai.product.domain.Product;
-import com.github.nduyhai.product.domain.ProductRepository;
+import com.nduyhai.product.domain.Product;
+import com.nduyhai.product.domain.ProductRepository;
 import jakarta.persistence.EntityNotFoundException;
 import java.util.Optional;
 import java.util.UUID;

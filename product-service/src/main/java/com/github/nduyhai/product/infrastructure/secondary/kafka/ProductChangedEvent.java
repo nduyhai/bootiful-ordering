@@ -1,4 +1,4 @@
-package com.github.nduyhai.product.infrastructure.secondary.kafka;
+package com.nduyhai.product.infrastructure.secondary.kafka;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

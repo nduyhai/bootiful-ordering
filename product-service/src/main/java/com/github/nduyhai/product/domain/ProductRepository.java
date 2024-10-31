@@ -1,4 +1,4 @@
-package com.github.nduyhai.product.domain;
+package com.nduyhai.product.domain;
 
 import java.util.Optional;
 import java.util.UUID;

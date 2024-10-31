@@ -1,7 +1,7 @@
 package com.nduyhai.ordering.application;
 
-import com.github.nduyhai.common.enumeration.OrderStatus;
-import com.github.nduyhai.common.money.Money;
+import com.nduyhai.common.enumeration.OrderStatus;
+import com.nduyhai.common.money.Money;
 import com.nduyhai.ordering.domain.Order;
 import com.nduyhai.ordering.domain.OrderEventPublisher;
 import com.nduyhai.ordering.domain.OrderRepository;

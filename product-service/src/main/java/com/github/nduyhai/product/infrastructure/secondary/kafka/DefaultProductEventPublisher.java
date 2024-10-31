@@ -1,7 +1,7 @@
-package com.github.nduyhai.product.infrastructure.secondary.kafka;
+package com.nduyhai.product.infrastructure.secondary.kafka;
 
-import com.github.nduyhai.product.domain.Product;
-import com.github.nduyhai.product.domain.ProductEventPublisher;
+import com.nduyhai.product.domain.Product;
+import com.nduyhai.product.domain.ProductEventPublisher;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;

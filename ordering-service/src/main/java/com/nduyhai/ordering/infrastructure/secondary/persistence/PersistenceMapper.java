@@ -1,6 +1,6 @@
 package com.nduyhai.ordering.infrastructure.secondary.persistence;
 
-import com.github.nduyhai.common.money.Money;
+import com.nduyhai.common.money.Money;
 import com.nduyhai.ordering.domain.LineItem;
 import com.nduyhai.ordering.domain.Order;
 import org.mapstruct.Mapper;

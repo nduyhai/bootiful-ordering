@@ -1,4 +1,4 @@
-package com.github.nduyhai.product.infrastructure.primary.rest;
+package com.nduyhai.product.infrastructure.primary.rest;
 
 import lombok.Getter;
 import lombok.Setter;

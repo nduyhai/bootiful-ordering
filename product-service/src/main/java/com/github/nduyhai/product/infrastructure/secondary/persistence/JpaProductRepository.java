@@ -1,4 +1,4 @@
-package com.github.nduyhai.product.infrastructure.secondary.persistence;
+package com.nduyhai.product.infrastructure.secondary.persistence;
 
 import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;

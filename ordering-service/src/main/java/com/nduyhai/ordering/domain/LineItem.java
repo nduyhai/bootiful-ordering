@@ -1,6 +1,6 @@
 package com.nduyhai.ordering.domain;
 
-import com.github.nduyhai.common.money.Money;
+import com.nduyhai.common.money.Money;
 import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;

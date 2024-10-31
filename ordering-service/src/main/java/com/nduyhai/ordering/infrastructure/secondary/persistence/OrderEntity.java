@@ -1,6 +1,6 @@
 package com.nduyhai.ordering.infrastructure.secondary.persistence;
 
-import com.github.nduyhai.common.enumeration.OrderStatus;
+import com.nduyhai.common.enumeration.OrderStatus;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;

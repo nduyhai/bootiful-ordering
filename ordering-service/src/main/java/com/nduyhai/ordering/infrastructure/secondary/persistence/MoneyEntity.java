@@ -1,6 +1,6 @@
 package com.nduyhai.ordering.infrastructure.secondary.persistence;
 
-import com.github.nduyhai.common.enumeration.CurrencyCode;
+import com.nduyhai.common.enumeration.CurrencyCode;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;

@@ -1,4 +1,4 @@
-package com.github.nduyhai.product;
+package com.nduyhai.product;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

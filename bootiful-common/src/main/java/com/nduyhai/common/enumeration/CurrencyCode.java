@@ -1,4 +1,4 @@
-package com.github.nduyhai.common.enumeration;
+package com.nduyhai.common.enumeration;
 
 public enum CurrencyCode {
   VND("Vietnamese đồng"),

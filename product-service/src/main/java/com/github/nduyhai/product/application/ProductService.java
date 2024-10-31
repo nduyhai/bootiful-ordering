@@ -1,6 +1,6 @@
-package com.github.nduyhai.product.application;
+package com.nduyhai.product.application;
 
-import com.github.nduyhai.product.domain.Product;
+import com.nduyhai.product.domain.Product;
 import java.util.Optional;
 import java.util.UUID;
 

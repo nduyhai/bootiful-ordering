@@ -1,6 +1,6 @@
 package com.nduyhai.inventory.application;
 
-import com.github.nduyhai.common.enumeration.ReservationStatus;
+import com.nduyhai.common.enumeration.ReservationStatus;
 import com.nduyhai.inventory.domain.Reservation;
 import com.nduyhai.inventory.domain.ReservationEventPublisher;
 import com.nduyhai.inventory.domain.ReservationRepository;
