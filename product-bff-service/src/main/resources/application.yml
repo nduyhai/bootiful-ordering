@@ -1,31 +1,11 @@
 server:
-  port: 9095
-  http2:
-    enabled: true
+  port: 9096
 spring:
   application:
-    name: inventory-service
+    name: product-bff-service
   threads:
     virtual:
       enabled: true
-  jpa:
-    show-sql: false
-    open-in-view: false
-    hibernate:
-      ddl-auto: none
-    generate-ddl: false
-  datasource:
-    url: jdbc:postgresql://localhost:5432/inventory
-    username: myuser
-    password: secret
-  flyway:
-    enabled: true
-  modulith:
-    republish-outstanding-events-on-restart: false
-  kafka:
-    consumer:
-      bootstrap-servers: localhost:9092
-      group-id: inventory-service
 management:
   endpoints:
     web:
@@ -50,3 +30,9 @@ logging:
   pattern:
     correlation: "[${spring.application.name:},%X{traceId:-},%X{spanId:-}] "
   include-application-name: false
+
+client:
+  inventory:
+    base-url: http://localhost:9095
+  product:
+    base-url: http://localhost:9094
