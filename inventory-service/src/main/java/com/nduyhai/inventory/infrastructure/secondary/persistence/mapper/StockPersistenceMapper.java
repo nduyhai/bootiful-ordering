@@ -8,8 +8,9 @@ import com.nduyhai.inventory.infrastructure.secondary.persistence.entity.StockLe
 import com.nduyhai.inventory.infrastructure.secondary.persistence.entity.TransactionEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingConstants;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface StockPersistenceMapper {
   Reservation toDomain(ReservationEntity reservationEntity);
 

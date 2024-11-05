@@ -4,8 +4,9 @@ import com.nduyhai.common.money.Money;
 import com.nduyhai.ordering.domain.LineItem;
 import com.nduyhai.ordering.domain.Order;
 import org.mapstruct.Mapper;
+import org.mapstruct.MappingConstants;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface PersistenceMapper {
 
   OrderEntity fromDomain(Order order);
