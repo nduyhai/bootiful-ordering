@@ -1,5 +1,6 @@
-package com.nduyhai.product.application;
+package com.nduyhai.product.application.internal;
 
+import com.nduyhai.product.application.ProductService;
 import com.nduyhai.product.domain.Product;
 import com.nduyhai.product.domain.ProductEventPublisher;
 import com.nduyhai.product.domain.ProductRepository;
