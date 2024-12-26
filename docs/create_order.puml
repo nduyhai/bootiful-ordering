@@ -4,30 +4,80 @@
 autonumber
 
 actor Bob
+participant Gateway
+participant ProductBff
 participant Product
 participant Order
 queue OrderChangedEvent
 participant Inventory
 queue InventoryChangedEvent
 participant Payment
+participant PaymentSPI
 participant Shipping
+queue PaymentChangedEvent
+
+== View Product ==
+
+Bob -> Gateway: Authenticate
+activate Gateway
+Gateway -> ProductBff: view list Products
+activate ProductBff
+  ProductBff -> Inventory: get Products have stock
+  Inventory --> ProductBff
+  ProductBff -> Product: get Products information
+  Product --> ProductBff
+ProductBff --> Gateway: return Products information
+deactivate ProductBff
+Gateway --> Bob
+deactivate Gateway
 
 
-
-Bob -> Order
+== Create order ==
+Bob -> Gateway: Authenticate
+Gateway -> ProductBff: create order
+ProductBff -> Product: get and validate price
+ProductBff -> Order: create order
 activate Order
-Order --> OrderChangedEvent
-Order --> Bob
+Order --> OrderChangedEvent: event order created
+Order --> Bob: return order information
 deactivate Order
 
 
 OrderChangedEvent  --> Inventory
 activate Inventory
 alt resevered
-Inventory --> InventoryChangedEvent
+Inventory --> InventoryChangedEvent: event stock reserved
 else
-Inventory --> InventoryChangedEvent
+Inventory --> InventoryChangedEvent: event stock reserved failed
 end
 deactivate Inventory
+
+InventoryChangedEvent --> Order: update order status
+alt reserved
+Order -> OrderChangedEvent: event order reserved, ready to payment
+else
+Order -> Order: update order status failed
+end
+
+
+== Payment ==
+
+Bob -> Gateway: Authenticate
+Gateway -> Payment: create payment
+Payment -> PaymentSPI: create payment
+PaymentSPI --> Payment: return payment information
+Payment --> Gateway: redirect to payment SPI
+Gateway --> Bob: redirect to payment SPI
+
+Bob -> Gateway: Authenticate
+Gateway -> PaymentSPI: execute payment
+PaymentSPI -> Payment: callback payment
+Payment --> PaymentChangedEvent: event payment success/failed
+Payment --> Gateway: return payment information
+Gateway --> Bob
+
+
+PaymentChangedEvent --> Order: update order status
+PaymentChangedEvent --> Inventory: update reserved product
 
 @enduml

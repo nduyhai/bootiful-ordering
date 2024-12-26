@@ -1,0 +1,23 @@
+@startuml
+'https://plantuml.com/state-diagram
+
+scale 350 width
+
+[*] --> CREATED: create order
+CREATED --> CONFIRMED: reserved stock
+CREATED --> CANCELED: customer cancel order
+
+CONFIRMED --> PAYING: customer paid order
+CONFIRMED: inventory reserved stock
+CONFIRMED --> CANCELED: customer cancel order
+
+PAYING --> CANCELED: customer cancel order
+PAYING --> PAID: payment success
+PAID: pay with SPI payment
+PAID --> SHIPPING: order shipped
+PAID --> REFUNDED: customer cancel paid order
+SHIPPING --> SHIPPED: shipped
+SHIPPING --> REFUNDED: order cancel
+SHIPPED --> [*]
+
+@enduml
