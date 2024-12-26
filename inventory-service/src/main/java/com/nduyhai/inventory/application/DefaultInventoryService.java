@@ -8,9 +8,11 @@ import com.nduyhai.inventory.domain.StockChecker;
 import com.nduyhai.inventory.domain.StockLevel;
 import com.nduyhai.inventory.domain.StockSelector;
 import com.nduyhai.inventory.domain.StockUpdater;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -44,5 +46,10 @@ public class DefaultInventoryService implements InventoryService {
     } else {
       this.reservationEventPublisher.publishEvent(req, ReservationStatus.PENDING);
     }
+  }
+
+  @Override
+  public List<StockLevel> getAvailable(PageRequest page) {
+    return this.stockSelector.getAvailable(page);
   }
 }

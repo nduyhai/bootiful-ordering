@@ -9,9 +9,12 @@ import com.nduyhai.productbff.dto.product.ProductInfo;
 import com.nduyhai.productbff.mapper.InventoryMapper;
 import com.nduyhai.productbff.mapper.ProductMapper;
 import com.nduyhai.productbff.service.ProductService;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -40,5 +43,32 @@ public class ProductServiceImpl implements ProductService {
     }
 
     return Optional.ofNullable(productInfo);
+  }
+
+  @Override
+  public List<ProductInfo> getProducts(int page, int size) {
+    List<InventoryRes> inventories = this.inventoryClient.getAvailableProducts(page, size);
+
+    Map<UUID, InventoryRes> mapInventories =
+        inventories.stream().collect(Collectors.toMap(InventoryRes::getProductId, e -> e));
+    if (mapInventories.isEmpty()) {
+      return List.of();
+    }
+    List<ProductRes> products = this.productClient.getProducts(mapInventories.keySet());
+
+    return products.stream()
+        .map(
+            product -> {
+              ProductInfo productInfo = productMapper.toProductInfo(product);
+              InventoryRes inventory = mapInventories.get(product.getProductId());
+              if (Objects.nonNull(inventory)) {
+                InventoryInfo inventoryInfo = this.inventoryMapper.toInventory(inventory);
+                if (Objects.nonNull(inventoryInfo)) {
+                  productInfo.setInventory(inventoryInfo);
+                }
+              }
+              return productInfo;
+            })
+        .toList();
   }
 }

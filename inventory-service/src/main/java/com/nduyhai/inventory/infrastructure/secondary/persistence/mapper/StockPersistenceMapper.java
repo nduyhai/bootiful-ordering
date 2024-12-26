@@ -6,6 +6,7 @@ import com.nduyhai.inventory.domain.Transaction;
 import com.nduyhai.inventory.infrastructure.secondary.persistence.entity.ReservationEntity;
 import com.nduyhai.inventory.infrastructure.secondary.persistence.entity.StockLevelEntity;
 import com.nduyhai.inventory.infrastructure.secondary.persistence.entity.TransactionEntity;
+import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
@@ -21,6 +22,8 @@ public interface StockPersistenceMapper {
       expression =
           "java(stockLevelEntity.getTotalQuantity() - stockLevelEntity.getReservedQuantity())")
   StockLevel toDomain(StockLevelEntity stockLevelEntity);
+
+  List<StockLevel> toDomains(List<StockLevelEntity> stockLevelEntity);
 
   StockLevelEntity fromDomain(StockLevel stockLevel);
 

@@ -2,6 +2,7 @@ package com.nduyhai.productbff.controller;
 
 import com.nduyhai.productbff.dto.product.ProductInfo;
 import com.nduyhai.productbff.service.ProductService;
+import java.util.List;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class ProductBffController {
   private final ProductService productService;
+
+  @GetMapping
+  public ResponseEntity<List<ProductInfo>> getProducts(int page, int size) {
+    return ResponseEntity.ok(this.productService.getProducts(page, size));
+  }
 
   @GetMapping("/{productId}")
   public ResponseEntity<ProductInfo> getProductById(@PathVariable UUID productId) {

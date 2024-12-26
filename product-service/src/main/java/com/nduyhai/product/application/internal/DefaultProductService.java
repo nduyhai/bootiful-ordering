@@ -5,6 +5,8 @@ import com.nduyhai.product.domain.Product;
 import com.nduyhai.product.domain.ProductEventPublisher;
 import com.nduyhai.product.domain.ProductRepository;
 import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
@@ -35,5 +37,11 @@ public class DefaultProductService implements ProductService {
   @Override
   public Optional<Product> getProduct(UUID productId) {
     return this.productRepository.getById(productId);
+  }
+
+  @Transactional(readOnly = true)
+  @Override
+  public List<Product> getProducts(Collection<UUID> ids) {
+    return this.productRepository.getProducts(ids);
   }
 }
