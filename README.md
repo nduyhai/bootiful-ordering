@@ -22,8 +22,13 @@ Implement a production-ready Ordering system using a microservices architecture:
 
 #### AMD
 
+#### Linux
 ```shell
 export PLATFORM=linux/amd64 && docker-compose up -d --force-recreate
+```
+#### Window 
+```shell
+set PLATFORM=linux/amd64 && docker-compose up -d --force-recreate
 ```
 #### ARM
 
