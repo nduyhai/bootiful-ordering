@@ -1,5 +1,6 @@
 package com.nduyhai.ordering.application;
 
+import com.nduyhai.common.enumeration.ReservationStatus;
 import com.nduyhai.ordering.domain.Order;
 import java.util.Optional;
 import java.util.UUID;
@@ -12,4 +13,6 @@ public interface OrderService {
   void cancel(UUID orderId);
 
   void confirmed(UUID orderId);
+
+  void reserveInventory(UUID orderId, ReservationStatus status);
 }

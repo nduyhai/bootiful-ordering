@@ -13,8 +13,8 @@ public class DefaultOrderEventPublisher implements OrderEventPublisher {
   private final OrderMessagingMapper orderMessagingMapper;
 
   @Override
-  public void onConfirmed(Order order) {
-    OrderConfirmedEvent event = this.orderMessagingMapper.fromDomain(order);
+  public void onChange(Order order) {
+    OrderChangedEvent event = this.orderMessagingMapper.fromDomain(order);
 
     this.applicationEventPublisher.publishEvent(event);
   }

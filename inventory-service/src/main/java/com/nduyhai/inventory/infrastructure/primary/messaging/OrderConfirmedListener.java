@@ -15,13 +15,29 @@ public class OrderConfirmedListener {
   private final InventoryService inventoryService;
   private final OrderMessagingMapper orderMessagingMapper;
 
-  @KafkaListener(topics = "OrderConfirmedEvent")
-  public void onConfirmedEvent(OrderConfirmedEvent orderConfirmedEvent) {
-    log.info("Received order changed event: {}", orderConfirmedEvent);
+  @KafkaListener(topics = "OrderChangedEvent")
+  public void onConfirmedEvent(OrderChangedEvent orderChangedEvent) {
+    log.info("Received order changed event: {}", orderChangedEvent);
 
-    ReservedStocks reserveReq = this.orderMessagingMapper.toDomain(orderConfirmedEvent);
+    switch (orderChangedEvent.getStatus()) {
+      case CANCELED:
+        {
+          this.inventoryService.releaseStock(orderChangedEvent.getOrderId());
+          log.info("Order confirmed {} cancelled", orderChangedEvent.getOrderId());
+          break;
+        }
+      case CONFIRMED:
+        {
+          ReservedStocks reserveReq = this.orderMessagingMapper.toDomain(orderChangedEvent);
 
-    this.inventoryService.reserveStock(new ReservationToCreate(orderConfirmedEvent.getCustomerId(), orderConfirmedEvent.getOrderId(), reserveReq)
-    );
+          this.inventoryService.reserveStock(
+              new ReservationToCreate(
+                  orderChangedEvent.getOrderId(), orderChangedEvent.getCustomerId(), reserveReq));
+          log.info("Order confirmed {} confirmed", orderChangedEvent.getOrderId());
+          break;
+        }
+      default:
+        log.warn("Unknown order status: {}", orderChangedEvent.getStatus());
+    }
   }
 }

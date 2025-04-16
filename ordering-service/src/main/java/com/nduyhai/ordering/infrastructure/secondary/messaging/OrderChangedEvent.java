@@ -1,4 +1,4 @@
-package com.nduyhai.inventory.infrastructure.primary.messaging;
+package com.nduyhai.ordering.infrastructure.secondary.messaging;
 
 import com.nduyhai.common.enumeration.OrderStatus;
 import com.nduyhai.common.money.Money;
@@ -7,12 +7,13 @@ import java.util.List;
 import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
+import org.jmolecules.event.types.DomainEvent;
+import org.springframework.modulith.events.Externalized;
 
+@Externalized(value = "OrderChangedEvent")
 @Getter
 @Setter
-@ToString
-public class OrderConfirmedEvent {
+public class OrderChangedEvent implements DomainEvent {
   private UUID orderId;
   private UUID customerId;
   private List<LineItemEvent> items;

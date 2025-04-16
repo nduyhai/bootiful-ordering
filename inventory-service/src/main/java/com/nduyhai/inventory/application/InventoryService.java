@@ -12,5 +12,7 @@ public interface InventoryService {
 
   void reserveStock(ReservationToCreate req);
 
+  void releaseStock(UUID orderId);
+
   List<StockLevel> getAvailable(PageRequest page);
 }

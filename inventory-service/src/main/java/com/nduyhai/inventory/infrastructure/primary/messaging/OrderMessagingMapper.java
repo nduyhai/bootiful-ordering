@@ -10,5 +10,5 @@ public interface OrderMessagingMapper {
 
   ReservedStock toDomain(LineItemEvent lineItemEvent);
 
-  ReservedStocks toDomain(OrderConfirmedEvent event);
+  ReservedStocks toDomain(OrderChangedEvent event);
 }

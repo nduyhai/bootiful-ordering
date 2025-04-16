@@ -25,6 +25,9 @@ spring:
   kafka:
     producer:
       bootstrap-servers: localhost:9092
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: order-service
 management:
   endpoints:
     web:

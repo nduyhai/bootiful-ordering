@@ -5,6 +5,9 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/auth-service/bootiful-ordering.auth-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/auth-service/bootiful-ordering.auth-service.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/customer-service/bootiful-ordering.customer-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/customer-service/bootiful-ordering.customer-service.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/inventory-service/bootiful-ordering.inventory-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/inventory-service/bootiful-ordering.inventory-service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ordering-service/bootiful-ordering.ordering-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ordering-service/bootiful-ordering.ordering-service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/product-service/bootiful-ordering.product-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/product-service/bootiful-ordering.product-service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/product-bff-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/product-bff-service.main.iml" />
     </modules>
   </component>
 </project>

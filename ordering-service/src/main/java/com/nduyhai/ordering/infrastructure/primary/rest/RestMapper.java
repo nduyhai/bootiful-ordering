@@ -1,4 +1,4 @@
-package com.nduyhai.ordering.infrastructure.primary;
+package com.nduyhai.ordering.infrastructure.primary.rest;
 
 import com.nduyhai.ordering.domain.LineItem;
 import com.nduyhai.ordering.domain.Order;

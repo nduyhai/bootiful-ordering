@@ -1,4 +1,4 @@
-package com.nduyhai.ordering.infrastructure.primary;
+package com.nduyhai.ordering.infrastructure.primary.rest;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;

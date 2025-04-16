@@ -8,7 +8,7 @@ import org.mapstruct.MappingConstants;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface OrderMessagingMapper {
-  OrderConfirmedEvent fromDomain(Order order);
+  OrderChangedEvent fromDomain(Order order);
 
   LineItemEvent fromDomain(LineItem lineItem);
 

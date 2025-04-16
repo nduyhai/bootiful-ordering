@@ -1,5 +1,6 @@
 package com.nduyhai.inventory.domain;
 
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +19,21 @@ public class StockUpdater {
       stock.setTotalQuantity(stock.getTotalQuantity() - item.quantity());
       stock.setReservedQuantity(stock.getReservedQuantity() + item.quantity());
       stock.setRemainingQuantity(stock.getTotalQuantity() - stock.getReservedQuantity());
+
+      this.stockLevelRepository.save(stock);
+    }
+  }
+
+  public void release(List<ReservedStock> stocks) {
+    for (ReservedStock item : stocks) {
+      StockLevel stock =
+          this.stockLevelRepository
+              .findByProductId(item.productId())
+              .orElseThrow(StockNotFoundException::new);
+
+      stock.setTotalQuantity(stock.getTotalQuantity() + item.quantity());
+      stock.setReservedQuantity(stock.getReservedQuantity() - item.quantity());
+      stock.setRemainingQuantity(stock.getTotalQuantity() + stock.getReservedQuantity());
 
       this.stockLevelRepository.save(stock);
     }
