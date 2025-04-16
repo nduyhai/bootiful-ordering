@@ -1,7 +1,7 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.3.5'
-    id 'io.spring.dependency-management' version '1.1.6'
+    id 'org.springframework.boot' version '3.4.4'
+    id 'io.spring.dependency-management' version '1.1.7'
 }
 
 group = 'com.nduyhai'
@@ -23,33 +23,21 @@ repositories {
     mavenCentral()
 }
 
-ext {
-    set('opentelemetryVersion', "2.6.0")
-}
-
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
-    implementation 'io.micrometer:micrometer-tracing-bridge-otel'
-    implementation("io.opentelemetry.instrumentation:opentelemetry-spring-boot-starter")
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0'
 
     implementation 'org.mapstruct:mapstruct:1.6.2'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    runtimeOnly 'io.opentelemetry:opentelemetry-exporter-otlp'
+    runtimeOnly 'io.micrometer:micrometer-registry-otlp'
     annotationProcessor 'org.projectlombok:lombok'
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.6.2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-}
-
-dependencyManagement {
-    imports {
-        mavenBom("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom:${opentelemetryVersion}")
-    }
 }
 
 tasks.named('test') {

@@ -7,4 +7,6 @@ include 'customer-service'
 include 'auth-service'
 include 'product-service'
 include 'bootiful-common'
+include 'payment-service'
+include 'product-bff-service'
 

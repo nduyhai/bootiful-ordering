@@ -1,0 +1,52 @@
+server:
+  port: 9096
+  http2:
+    enabled: true
+spring:
+  application:
+    name: payment-service
+  threads:
+    virtual:
+      enabled: true
+  jpa:
+    show-sql: false
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+    generate-ddl: false
+  datasource:
+    url: jdbc:postgresql://localhost:5432/inventory
+    username: myuser
+    password: secret
+  flyway:
+    enabled: true
+  modulith:
+    republish-outstanding-events-on-restart: false
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: inventory-service
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    tags:
+      application-name: ${spring.application.name}
+  otlp:
+    metrics:
+      export:
+        enabled: true
+        step: 1m
+        url: ${OTLP_BASE_URL:http://localhost:4318/v1/metrics}
+  tracing:
+    sampling:
+      probability: 1.0
+logging:
+  pattern:
+    correlation: "[${spring.application.name:},%X{traceId:-},%X{spanId:-}] "
+  include-application-name: false
