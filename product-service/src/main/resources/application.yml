@@ -21,7 +21,8 @@ spring:
   flyway:
     enabled: true
   modulith:
-    republish-outstanding-events-on-restart: false
+    events:
+      republish-outstanding-events-on-restart: false
 management:
   endpoints:
     web:

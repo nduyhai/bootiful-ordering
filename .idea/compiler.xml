@@ -23,4 +23,32 @@
       <module name="product-bff-service.test" target="17" />
     </bytecodeTargetLevel>
   </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="bootiful-ordering.auth-service" options="-parameters" />
+      <module name="bootiful-ordering.auth-service.main" options="-parameters" />
+      <module name="bootiful-ordering.auth-service.test" options="-parameters" />
+      <module name="bootiful-ordering.customer-service" options="-parameters" />
+      <module name="bootiful-ordering.customer-service.main" options="-parameters" />
+      <module name="bootiful-ordering.customer-service.test" options="-parameters" />
+      <module name="bootiful-ordering.gateway-service" options="-parameters" />
+      <module name="bootiful-ordering.gateway-service.main" options="-parameters" />
+      <module name="bootiful-ordering.gateway-service.test" options="-parameters" />
+      <module name="bootiful-ordering.inventory-service" options="-parameters" />
+      <module name="bootiful-ordering.inventory-service.main" options="-parameters" />
+      <module name="bootiful-ordering.inventory-service.test" options="-parameters" />
+      <module name="bootiful-ordering.ordering-service" options="-parameters" />
+      <module name="bootiful-ordering.ordering-service.main" options="-parameters" />
+      <module name="bootiful-ordering.ordering-service.test" options="-parameters" />
+      <module name="bootiful-ordering.payment-service" options="-parameters" />
+      <module name="bootiful-ordering.payment-service.main" options="-parameters" />
+      <module name="bootiful-ordering.payment-service.test" options="-parameters" />
+      <module name="bootiful-ordering.product-bff-service" options="-parameters" />
+      <module name="bootiful-ordering.product-bff-service.main" options="-parameters" />
+      <module name="bootiful-ordering.product-bff-service.test" options="-parameters" />
+      <module name="bootiful-ordering.product-service" options="-parameters" />
+      <module name="bootiful-ordering.product-service.main" options="-parameters" />
+      <module name="bootiful-ordering.product-service.test" options="-parameters" />
+    </option>
+  </component>
 </project>

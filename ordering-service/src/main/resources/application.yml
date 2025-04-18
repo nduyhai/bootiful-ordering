@@ -21,7 +21,8 @@ spring:
   flyway:
     enabled: true
   modulith:
-    republish-outstanding-events-on-restart: false
+    events:
+      republish-outstanding-events-on-restart: false
   kafka:
     producer:
       bootstrap-servers: localhost:9092
