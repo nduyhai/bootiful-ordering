@@ -5,7 +5,7 @@
       <profile name="Gradle Imported" enabled="true">
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
-          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.34/ec547ef414ab1d2c040118fb9c1c265ada63af14/lombok-1.18.34.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.42/8365263844ebb62398e0dc33057ba10ba472d3b8/lombok-1.18.42.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.mapstruct/mapstruct-processor/1.6.2/68f761eab9d57ea0a3721aaca822cdff5eaaf972/mapstruct-processor-1.6.2.jar" />
         </processorPath>
         <module name="bootiful-ordering.ordering-service.main" />
@@ -16,5 +16,27 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="21" />
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="bootiful-ordering.auth-service" options="-parameters" />
+      <module name="bootiful-ordering.auth-service.main" options="-parameters" />
+      <module name="bootiful-ordering.auth-service.test" options="-parameters" />
+      <module name="bootiful-ordering.customer-service" options="-parameters" />
+      <module name="bootiful-ordering.customer-service.main" options="-parameters" />
+      <module name="bootiful-ordering.customer-service.test" options="-parameters" />
+      <module name="bootiful-ordering.gateway-service" options="-parameters" />
+      <module name="bootiful-ordering.gateway-service.main" options="-parameters" />
+      <module name="bootiful-ordering.gateway-service.test" options="-parameters" />
+      <module name="bootiful-ordering.inventory-service" options="-parameters" />
+      <module name="bootiful-ordering.inventory-service.main" options="-parameters" />
+      <module name="bootiful-ordering.inventory-service.test" options="-parameters" />
+      <module name="bootiful-ordering.ordering-service" options="-parameters" />
+      <module name="bootiful-ordering.ordering-service.main" options="-parameters" />
+      <module name="bootiful-ordering.ordering-service.test" options="-parameters" />
+      <module name="bootiful-ordering.product-service" options="-parameters" />
+      <module name="bootiful-ordering.product-service.main" options="-parameters" />
+      <module name="bootiful-ordering.product-service.test" options="-parameters" />
+    </option>
   </component>
 </project>
